@@ -9,7 +9,6 @@ const typeMaps: { comp: string, page: string } = {
 };
 
 function getInput(filePath: string, createType: 'comp' | 'page'): any {
-    let str: string = `__dirname: ${__dirname}, __filename: ${__filename}`;
     let currentFiles: string[] = fs.readdirSync(filePath);
     return window.showInputBox({
         placeHolder: `输入${typeMaps[createType]}名称`
@@ -39,7 +38,9 @@ function writeTo(filePath: string, createType: 'comp' | 'page') {
                 fsPromise.readFile(path.join(__dirname, 'temp', createType, 'index.json'))
             ]).then((files: any[]) => {
                 let fileJs = files[0].toString().split('\n');
-                fileJs.unshift(importConnectStr);
+                if (useConnect) {
+                    fileJs.unshift(importConnectStr);
+                }
                 files = [
                     fileJs.join('\n'),
                     ...files,
