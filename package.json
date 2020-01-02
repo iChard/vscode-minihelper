@@ -1,0 +1,92 @@
+{
+	"name": "mini-helper",
+	"displayName": "MiniHelper",
+	"description": "",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.41.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:extension.helloWorld",
+		"onCommand:extension.showTime",
+		"onCommand:extension.createMiniPage",
+		"onCommand:extension.createMiniComp"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "extension.helloWorld",
+				"title": "Hello World"
+			},
+			{
+				"command": "extension.showTime",
+				"title": "Show Time"
+			},
+			{
+				"command": "extension.createMiniPage",
+				"title": "新建小程序页面"
+			},
+			{
+				"command": "extension.createMiniComp",
+				"title": "新建小程序组件"
+			}
+		],
+		"menus": {
+			"commandPalette": [
+				{
+					"command": "extension.helloWorld",
+					"when": "editorHasSelection"
+				}
+			],
+			"explorer/context": [
+				{
+					"when": "explorerResourceIsFolder",
+					"command": "extension.createMiniPage",
+					"group": "navigation"
+				}, {
+					"when": "explorerResourceIsFolder",
+					"command": "extension.createMiniComp",
+					"group": "navigation"
+				}
+			]
+		},
+		"configuration": {
+			"type": "object",
+			"title": "MiniHelper configuration",
+			"properties": {
+				"miniHelper.useRedux": {
+					"type": "boolean",
+					"default": false,
+					"description": "是否对新建小程序页面/组件使用redux状态管理"
+				},
+				"miniHelper.reduxConnectPath": {
+					"type": "string",
+					"default": "/path/to/connet",
+					"markdownDescription": "连接小程序和redux之间的connect, 相对于当前小程序app目录"
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/glob": "^7.1.1",
+		"@types/mocha": "^5.2.7",
+		"@types/node": "^12.11.7",
+		"@types/vscode": "^1.41.0",
+		"glob": "^7.1.5",
+		"mocha": "^6.2.2",
+		"typescript": "^3.6.4",
+		"tslint": "^5.20.0",
+		"vscode-test": "^1.2.2"
+	}
+}
