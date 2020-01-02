@@ -2,7 +2,7 @@
 	"name": "mini-helper",
 	"displayName": "MiniHelper",
 	"description": "",
-	"version": "0.0.1",
+	"version": "1.0.0",
 	"engines": {
 		"vscode": "^1.41.0"
 	},
@@ -47,7 +47,8 @@
 					"when": "explorerResourceIsFolder",
 					"command": "extension.createMiniPage",
 					"group": "navigation"
-				}, {
+				},
+				{
 					"when": "explorerResourceIsFolder",
 					"command": "extension.createMiniComp",
 					"group": "navigation"
