@@ -4,7 +4,7 @@
 	"description": "",
 	"repository": "git@github.com:iChard/vscode-minihelper.git",
 	"publisher": "lpy",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"engines": {
 		"vscode": "^1.41.0"
 	},
