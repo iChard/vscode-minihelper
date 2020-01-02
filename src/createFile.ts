@@ -33,10 +33,10 @@ function writeTo(filePath: string, createType: 'comp' | 'page') {
     getInput(filePath, createType).then((input: string) => {
         fsPromise.mkdir(path.join(filePath, input)).then(() => {
             return Promise.all([
-                fsPromise.readFile(path.join(__dirname, '../src/temp', createType, useConnect ? 'index-redux.js' : 'index.js')),
-                fsPromise.readFile(path.join(__dirname, '../src/temp', createType, 'index.axml')),
-                fsPromise.readFile(path.join(__dirname, '../src/temp', createType, 'index.acss')),
-                fsPromise.readFile(path.join(__dirname, '../src/temp', createType, 'index.json'))
+                fsPromise.readFile(path.join(__dirname, 'temp', createType, useConnect ? 'index-redux.js' : 'index.js')),
+                fsPromise.readFile(path.join(__dirname, 'temp', createType, 'index.axml')),
+                fsPromise.readFile(path.join(__dirname, 'temp', createType, 'index.acss')),
+                fsPromise.readFile(path.join(__dirname, 'temp', createType, 'index.json'))
             ]).then((files: any[]) => {
                 let fileJs = files[0].toString().split('\n');
                 fileJs.unshift(importConnectStr);

@@ -76,8 +76,8 @@
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
-		"compile": "tsc -p ./",
-		"watch": "tsc -watch -p ./",
+		"compile": "tsc -p ./ & cp -rf ./src/temp ./out",
+		"watch": "tsc -watch -p ./ & cp -rf ./src/temp ./out",
 		"pretest": "npm run compile",
 		"test": "node ./out/test/runTest.js"
 	},

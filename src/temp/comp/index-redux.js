@@ -1,5 +1,4 @@
 
-
 const pageConfig = {
     mixins: [],
     data: {
