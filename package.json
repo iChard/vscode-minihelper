@@ -12,22 +12,12 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:extension.helloWorld",
-		"onCommand:extension.showTime",
 		"onCommand:extension.createMiniPage",
 		"onCommand:extension.createMiniComp"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
-			{
-				"command": "extension.helloWorld",
-				"title": "Hello World"
-			},
-			{
-				"command": "extension.showTime",
-				"title": "Show Time"
-			},
 			{
 				"command": "extension.createMiniPage",
 				"title": "新建小程序页面"
@@ -38,12 +28,6 @@
 			}
 		],
 		"menus": {
-			"commandPalette": [
-				{
-					"command": "extension.helloWorld",
-					"when": "editorHasSelection"
-				}
-			],
 			"explorer/context": [
 				{
 					"when": "explorerResourceIsFolder",
