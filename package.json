@@ -45,6 +45,11 @@
 			"type": "object",
 			"title": "MiniHelper configuration",
 			"properties": {
+				"miniHelper.miniType": {
+					"type": "string",
+					"default": "ali",
+					"markdownDescription": "小程序类型`ali`:阿里系小程序 `we`：微信小程序"
+				},
 				"miniHelper.useRedux": {
 					"type": "boolean",
 					"default": false,

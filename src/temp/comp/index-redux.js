@@ -1,5 +1,5 @@
 
-const pageConfig = {
+const comConfig = {
     mixins: [],
     data: {
 
@@ -20,5 +20,5 @@ const mapStateToData = state => ({
 const mapDispatchToPage = dispath => ({
 
 })
-const nextPageConfig = connect(mapStateToData, mapDispatchToPage)(pageConfig)
-Page(nextPageConfig);
+const nextConfig = connect(mapStateToData, mapDispatchToPage)(comConfig)
+Component(nextConfig);

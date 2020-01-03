@@ -8,6 +8,23 @@ const typeMaps: { comp: string, page: string } = {
     page: '页面'
 };
 
+interface Itype {
+    html: string;
+    css: string;
+}
+
+
+const extMaps: { [a: string]: Itype} = {
+    ali: {
+        html: 'axml',
+        css: 'acss'
+    },
+    we: {
+        html: 'wxml',
+        css: 'wcss'
+    }
+};
+
 function getInput(filePath: string, createType: 'comp' | 'page'): any {
     let currentFiles: string[] = fs.readdirSync(filePath);
     return window.showInputBox({
@@ -28,6 +45,7 @@ function getInput(filePath: string, createType: 'comp' | 'page'): any {
 function writeTo(filePath: string, createType: 'comp' | 'page') {
     const useConnect: boolean = workspace.getConfiguration().get('miniHelper.useRedux') || false;
     const connectPath: string = workspace.getConfiguration().get('miniHelper.reduxConnectPath') || '/path/to/connect';
+    let inputMiniType: string = workspace.getConfiguration().get('miniHelper.miniType') || 'ali';
     const importConnectStr: string = `import { connect } from "${connectPath}";`;
     getInput(filePath, createType).then((input: string) => {
         fsPromise.mkdir(path.join(filePath, input)).then(() => {
@@ -41,14 +59,13 @@ function writeTo(filePath: string, createType: 'comp' | 'page') {
                 if (useConnect) {
                     fileJs.unshift(importConnectStr);
                 }
-                files = [
-                    fileJs.join('\n'),
-                    ...files,
-                ];
+                files[0] = fileJs.join('\n');
+                let mapKeys: string[] = Object.keys(extMaps);//[a: string]
+                let miniType: keyof typeof extMaps = mapKeys.includes(inputMiniType) ? inputMiniType : 'we';// 输入不合法时默认是微信小程序
                 return Promise.all([
                     fsPromise.writeFile(path.join(filePath, input, 'index.js'), files[0]),
-                    fsPromise.writeFile(path.join(filePath, input, 'index.wxml'), files[1]),
-                    fsPromise.writeFile(path.join(filePath, input, 'index.wcss'), files[2]),
+                    fsPromise.writeFile(path.join(filePath, input, `index.${extMaps[miniType].html}`), files[1]),
+                    fsPromise.writeFile(path.join(filePath, input, `index.${extMaps[miniType].css}`), files[2]),
                     fsPromise.writeFile(path.join(filePath, input, 'index.json'), files[3])
                 ]);
             });
