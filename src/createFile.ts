@@ -1,3 +1,10 @@
+/*
+ * @Author: lpy
+ * @LastEditors  : lpy
+ * @Description: File for 小程序开发助手
+ * @Date: 2020-01-02 20:45:12
+ * @LastEditTime : 2020-01-08 13:56:16
+ */
 import * as fs from 'fs';
 import * as path from 'path';
 import { window, workspace } from 'vscode';
@@ -43,10 +50,13 @@ function getInput(filePath: string, createType: 'comp' | 'page'): any {
 }
 
 function writeTo(filePath: string, createType: 'comp' | 'page') {
+    debugger;
     const useConnect: boolean = workspace.getConfiguration().get('miniHelper.useRedux') || false;
     const connectPath: string = workspace.getConfiguration().get('miniHelper.reduxConnectPath') || '/path/to/connect';
-    let inputMiniType: string = workspace.getConfiguration().get('miniHelper.miniType') || 'ali';
+    const inputMiniType: string = workspace.getConfiguration().get('miniHelper.miniType') || 'ali';
+    const cssStyle: string = workspace.getConfiguration().get('miniHelper.cssStyle')  || 'css';
     const importConnectStr: string = `import { connect } from "${connectPath}";`;
+    
     getInput(filePath, createType).then((input: string) => {
         fsPromise.mkdir(path.join(filePath, input)).then(() => {
             return Promise.all([
@@ -65,7 +75,7 @@ function writeTo(filePath: string, createType: 'comp' | 'page') {
                 return Promise.all([
                     fsPromise.writeFile(path.join(filePath, input, 'index.js'), files[0]),
                     fsPromise.writeFile(path.join(filePath, input, `index.${extMaps[miniType].html}`), files[1]),
-                    fsPromise.writeFile(path.join(filePath, input, `index.${extMaps[miniType].css}`), files[2]),
+                    fsPromise.writeFile(path.join(filePath, input, `index.${cssStyle === 'css' ? extMaps[miniType].css : cssStyle}`), files[2]),
                     fsPromise.writeFile(path.join(filePath, input, 'index.json'), files[3])
                 ]);
             });

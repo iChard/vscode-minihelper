@@ -1,3 +1,10 @@
+<!--
+ * @Author: lpy
+ * @LastEditors  : lpy
+ * @Description: File for 
+ * @Date: 2020-01-01 13:08:04
+ * @LastEditTime : 2020-01-08 14:13:07
+ -->
 # MiniHelper文档
 > 主要是为了方便在vscode中快速新建小程序页面、组件
 
@@ -11,6 +18,7 @@
 1. 打开vscode设置
 2. 选择组件MiniHelper
     - Mini Type小程序类型：`we`:微信小程序 `ali`:阿里系小程序， 当用户输入不匹配时默认是微信小程序
+    - CSS Style： css类型，支持['css', 'less', 'scss']默认css,即根据mini type设置值返回wcss或者acss,
     - Use Redux是否在小程序中启用redux状态管理
     - Redux Connect Path配置连接小程序和redux的connect路劲，路劲相对于小程序的app.js
 

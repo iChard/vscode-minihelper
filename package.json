@@ -20,11 +20,11 @@
 		"commands": [
 			{
 				"command": "extension.createMiniPage",
-				"title": "新建小程序页面"
+				"title": "新建小程序页面1"
 			},
 			{
 				"command": "extension.createMiniComp",
-				"title": "新建小程序组件"
+				"title": "新建小程序组件2"
 			}
 		],
 		"menus": {
@@ -48,6 +48,7 @@
 				"miniHelper.miniType": {
 					"type": "string",
 					"default": "ali",
+					"enum": ["ali","we"],
 					"markdownDescription": "小程序类型`ali`:阿里系小程序 `we`：微信小程序"
 				},
 				"miniHelper.useRedux": {
@@ -59,6 +60,12 @@
 					"type": "string",
 					"default": "/path/to/connet",
 					"markdownDescription": "连接小程序和redux之间的connect, 相对于当前小程序app目录"
+				},
+				"miniHelper.cssStyle": {
+					"type": "string",
+					"default": "css",
+					"enum": ["css","less","scss"],
+					"markdownDescription": "css格式，支持less/scss"
 				}
 			}
 		}
