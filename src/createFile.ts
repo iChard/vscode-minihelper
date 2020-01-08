@@ -3,7 +3,7 @@
  * @LastEditors  : lpy
  * @Description: File for 小程序开发助手
  * @Date: 2020-01-02 20:45:12
- * @LastEditTime : 2020-01-08 13:56:16
+ * @LastEditTime : 2020-01-08 14:17:48
  */
 import * as fs from 'fs';
 import * as path from 'path';
@@ -50,7 +50,6 @@ function getInput(filePath: string, createType: 'comp' | 'page'): any {
 }
 
 function writeTo(filePath: string, createType: 'comp' | 'page') {
-    debugger;
     const useConnect: boolean = workspace.getConfiguration().get('miniHelper.useRedux') || false;
     const connectPath: string = workspace.getConfiguration().get('miniHelper.reduxConnectPath') || '/path/to/connect';
     const inputMiniType: string = workspace.getConfiguration().get('miniHelper.miniType') || 'ali';
