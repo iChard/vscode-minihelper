@@ -4,7 +4,7 @@
 	"description": "",
 	"repository": "git@github.com:iChard/vscode-minihelper.git",
 	"publisher": "lpy",
-	"version": "0.0.5",
+	"version": "0.0.6",
 	"engines": {
 		"vscode": "^1.41.0"
 	},
@@ -48,7 +48,10 @@
 				"miniHelper.miniType": {
 					"type": "string",
 					"default": "ali",
-					"enum": ["ali","we"],
+					"enum": [
+						"ali",
+						"we"
+					],
 					"markdownDescription": "小程序类型`ali`:阿里系小程序 `we`：微信小程序"
 				},
 				"miniHelper.useRedux": {
@@ -64,7 +67,11 @@
 				"miniHelper.cssStyle": {
 					"type": "string",
 					"default": "css",
-					"enum": ["css","less","scss"],
+					"enum": [
+						"css",
+						"less",
+						"scss"
+					],
 					"markdownDescription": "css格式，支持less/scss"
 				}
 			}
