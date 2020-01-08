@@ -20,11 +20,11 @@
 		"commands": [
 			{
 				"command": "extension.createMiniPage",
-				"title": "新建小程序页面1"
+				"title": "新建小程序页面"
 			},
 			{
 				"command": "extension.createMiniComp",
-				"title": "新建小程序组件2"
+				"title": "新建小程序组件"
 			}
 		],
 		"menus": {
